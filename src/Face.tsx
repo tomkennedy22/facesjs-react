@@ -1,9 +1,20 @@
 import { ComponentType } from 'react';
 import { bodyFileNameComponentMap } from './components/body';
-import { Hair } from './components/hair';
 import { type_body, type_ear, type_face, type_jersey } from './types';
 import { jerseyFileNameComponentMap } from './components/jersey';
 import { earFileNameComponentMap } from './components/ear';
+import { headFileNameComponentMap } from './components/head';
+import { eyeLineFileNameComponentMap } from './components/eyeLine';
+import { smileLineFileNameComponentMap } from './components/smileLine';
+import { miscLineFileNameComponentMap } from './components/miscLine';
+import { facialHairFileNameComponentMap } from './components/facialHair';
+import { eyeFileNameComponentMap } from './components/eye';
+import { eyebrowFileNameComponentMap } from './components/eyebrow';
+import { mouthFileNameComponentMap } from './components/mouth';
+import { noseFileNameComponentMap } from './components/nose';
+import { hairFileNameComponentMap } from './components/hair';
+import { glassesFileNameComponentMap } from './components/glasses';
+import { accessoriesFileNameComponentMap } from './components/accessories';
 
 
 
@@ -15,7 +26,7 @@ export const Face = (face_obj: type_face) => {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
                 {/* <HairBg {...face_obj} /> */}
                 <Body {...face_obj} />
-                {/* <Jersey {...face_obj} />
+                <Jersey {...face_obj} />
                 <Ear {...face_obj} />
                 <Head {...face_obj} />
                 <EyeLine {...face_obj} />
@@ -28,7 +39,7 @@ export const Face = (face_obj: type_face) => {
                 <Nose {...face_obj} />
                 <Hair {...face_obj} />
                 <Glasses {...face_obj} />
-                <Accessories {...face_obj} /> */}
+                <Accessories {...face_obj} />
             </svg>
         </div>
     )
@@ -37,18 +48,217 @@ export const Face = (face_obj: type_face) => {
 
 export const Body = (props: type_face): JSX.Element => {
 
-    let ChosenComponent = bodyFileNameComponentMap[props.body.id];
-    return ChosenComponent;
+    const ChosenComponent = bodyFileNameComponentMap[props.body.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <div>Component not found</div>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
 }
 
-export const Jersey = (props: type_jersey): ComponentType<any> => {
+export const Jersey = (props: type_face): JSX.Element => {
 
-    let ChosenComponent = jerseyFileNameComponentMap[props.id];
-    return ChosenComponent;
+    const ChosenComponent = jerseyFileNameComponentMap[props.body.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <div>Component not found</div>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
 }
 
-export const Ear = (props: type_ear): ComponentType<any> => {
+export const Ear = (props: type_face): JSX.Element => {
 
-    let ChosenComponent = earFileNameComponentMap[props.id];
-    return ChosenComponent;
+    const ChosenComponent = earFileNameComponentMap[props.ear.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
 }
+
+export const Head = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = headFileNameComponentMap[props.head.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+export const EyeLine = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = eyeLineFileNameComponentMap[props.eyeLine.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const SmileLine = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = smileLineFileNameComponentMap[props.smileLine.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const MiscLine = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = miscLineFileNameComponentMap[props.miscLine.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const FacialHair = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = facialHairFileNameComponentMap[props.facialHair.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const Eye = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = eyeFileNameComponentMap[props.eye.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const Eyebrow = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = eyebrowFileNameComponentMap[props.eyebrow.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const Mouth = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = mouthFileNameComponentMap[props.mouth.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const Nose = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = noseFileNameComponentMap[props.nose.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const Hair = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = hairFileNameComponentMap[props.hair.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const Glasses = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = glassesFileNameComponentMap[props.glasses.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+
+
+export const Accessories = (props: type_face): JSX.Element => {
+
+    const ChosenComponent = accessoriesFileNameComponentMap[props.accessories.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Render ChosenComponent as a JSX element
+    return <ChosenComponent {...props} />;
+}
+
+

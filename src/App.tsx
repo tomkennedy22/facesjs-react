@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Face face_obj={face_obj} />
+        <Face {...face_obj} />
       </header>
     </div>
   );
