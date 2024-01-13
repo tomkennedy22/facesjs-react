@@ -47,34 +47,36 @@ export const Face = (face_obj: type_face) => {
 
 
 export const Body = (props: type_face): JSX.Element => {
-
     const ChosenComponent = bodyFileNameComponentMap[props.body.id];
 
     // Check if ChosenComponent exists
     if (!ChosenComponent) {
-        return <div>Component not found</div>; // Or handle the error as needed
+        return <></>; // Or handle the error as needed
     }
 
-    // Render ChosenComponent as a JSX element
-    return <ChosenComponent {...props} />;
+    // Assuming you want to render the ChosenComponent multiple times based on 'positions'
+    // For this example, let's say you want it 3 times. Adjust as needed.
+    const positions: null[] | number[][] = [null]; // Example positions
+
+    return (
+        <g>
+            {positions.map((position, index) => {
+                let positionProps = {};
+
+                if (Array.isArray(position)) {
+                    positionProps = { positionX: position[0], positionY: position[1] };
+                }
+
+                return <ChosenComponent key={index} {...props} {...positionProps} />;
+            })}
+        </g>
+    );
 }
+
 
 export const Jersey = (props: type_face): JSX.Element => {
 
     const ChosenComponent = jerseyFileNameComponentMap[props.body.id];
-
-    // Check if ChosenComponent exists
-    if (!ChosenComponent) {
-        return <div>Component not found</div>; // Or handle the error as needed
-    }
-
-    // Render ChosenComponent as a JSX element
-    return <ChosenComponent {...props} />;
-}
-
-export const Ear = (props: type_face): JSX.Element => {
-
-    const ChosenComponent = earFileNameComponentMap[props.ear.id];
 
     // Check if ChosenComponent exists
     if (!ChosenComponent) {
@@ -83,6 +85,43 @@ export const Ear = (props: type_face): JSX.Element => {
 
     // Render ChosenComponent as a JSX element
     return <ChosenComponent {...props} />;
+}
+
+export const Ear = (props: type_face): JSX.Element => {
+    const ChosenComponent = earFileNameComponentMap[props.ear.id];
+
+    // Check if ChosenComponent exists
+    if (!ChosenComponent) {
+        return <></>; // Or handle the error as needed
+    }
+
+    // Assuming you want to render the ChosenComponent multiple times based on 'positions'
+    // For this example, let's say you want it 3 times. Adjust as needed.
+    const positions: null | number[][] = [
+        [40, 325],
+        [330, 325],
+    ]
+
+    const scaleFatness = true;
+
+    return (
+        <g>
+            {positions.map((position, index) => {
+                let transform = '';
+
+                if (position) {
+                    const [x, y] = position;
+                    transform = `translate(${x}, ${y})`;
+                }
+
+                return (
+                    <g transform={transform}>
+                        <ChosenComponent key={index} {...props} />
+                    </g>
+                )
+            })}
+        </g>
+    );
 }
 
 export const Head = (props: type_face): JSX.Element => {
